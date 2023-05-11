@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevF Student's Data Base</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div id="navbar">
+            <div id="schoolLogo">
+                <p>School Logo</p>
+            </div>
+            <div id="searchAccount">
+                <div>
+                    <button>Search</button>
+                </div>
+                <div>
+                    <button>Account</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <div id="backDiv">
+            <button id="backButton">Back</button>
+        </div>
+
+        <div id="menus">
+
+            <div id="mainMenu">
+                <div class="menuTitle">
+                    <div class="title">
+                        <h1>Base de datos de alumnos</h1>
+                    </div>
+                </div>
+                <div id="mainButtons">
+                    <button id="newStudentButton">Dar de alta nuevo estudiante</button>
+                    <button id="studentListButton">Ver lista de alumnos</button>
+                    <button id="searchStudentButton">Buscar alumno</button>
+                </div>
+            </div>
+
+            <div id="newStudentMenu" style="display: none" >
+                <div class="menuTitle">
+                    <div class="title">
+                        <h1>Dar de alta nuevo alumno</h1>
+                    </div>
+                </div>
+                <form id="form-student">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required><br>
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" required><br>
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required><br>
+                    <button type="submit">Add Student</button>
+                </form>
+
+            </div>
+
+            <div id="studentListMenu" style="display: none">
+                <!-- <ul id="studentList"></ul> -->
+                <div class="menuTitle">
+                    <div class="title">
+                        <h1>Lista completa de alumnos</h1>
+                    </div>
+                </div>
+                <table id="student-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th id="subjectList">Asignaturas/Calificaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="searchStudentMenu" style="display: none">
+                <div class="menuTitle">
+                    <div class="title">
+                        <h1>Buscar alumno (nombre o apellido)</h1>
+                    </div>
+                </div>
+                <form id="formSearchStudent">
+                    <label for="name">Nombre o apellido:</label>
+                    <input type="text" id="nameOrSurename" name="nameOrSurename" required><br>
+                    <button type="submit">Buscar</button>
+                </form>
+
+                <table id="studentTable2" style="display: none">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th id="subjectList">Asignaturas/Calificaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+            
+
+
+            <!-- <div id="groupListMenu" style="display:none">
+                <div class="menuTitle">
+                    <div class="title">
+                        <h1>Lista por grupos</h1>
+                    </div>
+                </div>
+
+                <form id="formGroup">
+                    <label>
+                        Nombre del grupo:
+                        <input type="text" id="group-name" required>
+                    </label>
+                    <br>
+                    <label>
+                        Estudiantes:
+                        <select id="student-select" multiple>
+                            <!-- opciones generadas dinámicamente con JavaScript 
+                        </select>
+                    </label>
+                    <br>
+                    <button type="submit">Crear grupo</button>
+                </form>
+
+                <table id="group-table">
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Estudiantes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- filas de tabla generadas dinámicamente con JavaScript 
+                    </tbody>
+                </table>
+
+            </div> -->
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+
+
+    <script type="module" src="./main.js"></script>
+</body>
+
+</html>

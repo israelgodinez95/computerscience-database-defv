@@ -1,0 +1,374 @@
+* {
+
+    /*box-sizing: border-box;
+    outline: 1px solid limegreen;
+    */
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: azure;
+}
+
+header {
+    width: 100%;
+    height: 7%;
+    background-color: rgb(5, 147, 255);
+    display: flex;
+}
+
+#navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+#schoolLogo,
+#searchAccount {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+
+}
+
+#searchAccount button {
+    width: 150px;
+    height: 100%;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+    font-size: large;
+}
+
+main {
+    height: 88%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#backDiv {
+    position: absolute;
+    right: 90%;
+    top: 10%;
+    width: 100px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backButton {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(0, 186, 124);
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#menus {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#mainMenu {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    color: rgb(0, 53, 93);
+    font-size: larger;
+}
+
+#mainButtons {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#mainButtons button {
+    padding: 10px;
+    margin: 15px;
+    border: none;
+    border-radius: 20px;
+    height: 60px;
+    width: 200px;
+    background-color: rgb(0, 186, 124);
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+}
+
+#newStudentMenu {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+form {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+form label {
+    font-size: larger;
+}
+
+form input {
+    height: 25px;
+    width: 250px;
+    border-radius: 15px;
+}
+
+form button {
+    height: 50px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 186, 124);
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#studentListMenu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start
+}
+
+table {
+    border-collapse: collapse;
+    width: 60%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th{
+    color: white;
+    background-color:rgb(5, 147, 255);
+    font-size: larger;
+    font-weight: bolder;
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:hover{
+    background-color: #ddd;
+}
+#student-table button{
+    height: 40px;
+    width: 90px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 186, 124);
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+ul{
+    list-style-type:none;
+}
+
+#searchStudentMenu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+#searchStudentMenu form{
+    height: 25%;
+}
+
+footer {
+    height: 5%;
+    width: 100%;
+    background-color: rgb(5, 147, 255);
+}
+
+
+
+
+/*
+* {
+    box-sizing: border-box;
+    outline: 1px solid limegreen;  
+
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: azure;
+}
+
+header{
+    width: 100%;
+    height: 5%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(5, 147, 255);
+    display: flex;
+    flex-direction: column;
+}
+
+#navbar{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: space-between;
+    align-items: center;
+    height: 40%;
+}
+
+#main{
+    
+    height: 40%;
+    width: 100%;
+    
+}
+
+#footer{
+    height: 20%;
+}
+
+/*
+#schoolLogo, #searchAccount{
+    display: flex;
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#searchAccount button{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: large;
+}
+
+#backButtonDiv{
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+#divback{
+    justify-content: left;
+    position: fixed;
+    left: 10%;
+}
+
+#backButton{
+    background-color: rgb(0, 186, 22);
+    border: none;
+    height: 50px;
+    width: 100px;
+    color: white;
+    font-size:large;
+    font-weight:bolder;
+    border-radius: 20px;    
+}
+
+#menus{
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*
+#mainButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#mainButtons button{
+    background-color: rgb(0, 186, 22);
+    border: none;
+    height: 80px;
+    width: 200px;
+    color: white;
+    border-radius: 20px;
+    font-size: larger;
+
+}
+
+#form-student{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+#newStudentMenu {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+#main{
+    height: 700px;
+}
+/* 
