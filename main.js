@@ -1,8 +1,17 @@
-//Importamos la clase "Student" desde el archivo student.js
+//*Proyecto: Base de datos de alumnos. Modulo: Computer Science. Israel Godinez Bravo.
+//*14/5/23
+
+//*Importamos la clase "Student" desde el archivo student.js
 import { Student } from "./student.js";
 import { StudentList } from "./studentList.js";
+import { Group } from "./Group.js";
 
-const devfStudents = new StudentList();
+
+const devfStudents = new StudentList(); //*Instancia de la clase StudentList para guardar todos nuestros objetos Student
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *2.- Alta de alumnos
+/*Una vez creado el prototipo desde su sitio, deberán dar de alta alumnos, por defecto lo único que deben pedir 
+como requisito al inicio es nombre, apellidos, edad.*/
 
 const formStudent = document.getElementById("form-student");
 
@@ -16,199 +25,112 @@ formStudent.addEventListener("submit", function (event) {
   const newStudent = new Student(name, surname, age); //lo unico que pedimos como requisito inicial es nombre, apellidos y edad.
   formStudent.reset(); //reset al formulario
   devfStudents.addStudent(newStudent); //agrego el nuevo objeto al arreglo allStudents[]
+  alert("Inscrito con exito");
 });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *2
 
-const searchStudent = document.getElementById("formSearchStudent");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *3.- Buscar alumno (nombre o apellido)
+const searchStudent = document.getElementById('searchStudentAction');
+var spottedStudent = "";
 
-searchStudent.addEventListener("submit", function (event) {
+searchStudent.addEventListener('click', function (event) {
   event.preventDefault();
 
-  const nameOrSurename = document.getElementById("nameOrSurename").value;
-  formStudent.reset();
-
-  if ((devfStudents.searchStudent(nameOrSurename)) == true) {
+  var nameOrSurename = document.getElementById("nameOrSurename").value;
+  if ((devfStudents.searchStudent(nameOrSurename)) != false) {
+    spottedStudent = devfStudents.searchStudent(nameOrSurename);
     mainMenu.style.display = 'none';
     newStudentMenu.style.display = 'none';
     searchStudentMenu.style.display = 'flex';
     studentListMenu.style.display = 'none';
-    studentTable2.style.display="";
+    studentTable2.style.display = "";
+    formSearchStudent.reset();
+    alert("Encontrado");
+  } else if ((devfStudents.searchStudent(nameOrSurename)) == false) {
+    alert("No se encuentra");
+    formSearchStudent.reset();
   }
-
-
-})
-
-
-
-
-
-const student1 = new Student("Israel", "Godinez", 22);
-
-student1.addSubject("historia");
-student1.addSubject("biologia");
-student1.addSubject("histologia");
-student1.assignGrade(10, "biologia");
-student1.assignGrade(1, "historia");
-student1.addSubject("matematicas");
-student1.addSubject("fisica");
-student1.addSubject("astronomia");
-student1.assignGrade(10, "astronomia");
-devfStudents.addStudent(student1);
-console.log(devfStudents);
-/*
-const student2=new Student("Pelusa","Nei",26);
-
-student2.addSubject("historia");
-student2.addSubject("biologia");
-
-
-const defvStudents=new StudentList();
-defvStudents.addStudent(student1);
-defvStudents.addStudent(student2);
-student2.addSubject("Probabilidad");
-student2.assignGrade(3,"biologia");
-
-defvStudents.displayStudentList();
-*/
-
-/*
-2.- Alta de alumnos
-Una vez creado el prototipo desde su sitio, deberán dar de alta alumnos, por defecto lo único que deben pedir 
-como requisito al inicio es nombre, apellidos, edad.
-*/
-
-/*
-let studentList=[];
-
-const formStudent = document.getElementById("form-student");
-
-formStudent.addEventListener("submit", function (event) {
-    event.preventDefault(); // prevenimos el comportamiento por defecto del formulario
-
-    const name = document.getElementById("name").value;
-    const surname = document.getElementById("surname").value;
-    const age = document.getElementById("age").value;
-
-    const newStudent = new Student(name, surname, age); //lo unico que pedimos como requisito inicial es nombre, apellidos y edad.
-    formStudent.reset(); //reset al formulario
-    studentList.push(newStudent); //agrego el nuevo objeto al arreglo allStudents[]
 });
-*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *3
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *4.- Agregar materia nueva a Student
+const newSubject = document.getElementById('enroll');
 
-/*
-//funcion para desplegar la lista completa de estudiantes dados de alta, deplegados en <li>
-function displayStudentList() {
-    const studentTableBody = document.querySelector('#student-table tbody');
-    studentTableBody.innerHTML = '';
-  
-    studentList.forEach((student) => {
-      const studentRow = document.createElement('tr');
-  
-      const nameCell = document.createElement('td');
-      nameCell.innerText = student.name;
-      studentRow.appendChild(nameCell);
-  
-      const surnameCell = document.createElement('td');
-      surnameCell.innerText = student.surname;
-      studentRow.appendChild(surnameCell);
-  
-      const ageCell = document.createElement('td');
-      ageCell.innerText = student.age;
-      studentRow.appendChild(ageCell);
-  
-      const assignaturesCell = document.createElement('td');
-      if (student.assignatures.length > 0) {
-        const assignaturesList = document.createElement('ul');
-        student.assignatures.forEach((assignature, index) => {
-          const grade = student.grades[index];
-          const listItem = document.createElement('li');
-          listItem.innerText = `${assignature}: ${grade}`;
-          assignaturesList.appendChild(listItem);
-        });
-        assignaturesCell.appendChild(assignaturesList);
-      }
-      studentRow.appendChild(assignaturesCell);
-  
-      const enrollButtonCell = document.createElement('td');
-      const enrollButton = document.createElement('button');
-      enrollButton.innerText = 'Inscribir';
-      enrollButton.addEventListener('click', () => {
-        enrollStudentToClass(student);
-      });
-      enrollButtonCell.appendChild(enrollButton);
-      studentRow.appendChild(enrollButtonCell);
-  
-      studentTableBody.appendChild(studentRow);
-    });
-  }
-
-*/
-
-/*
-//funcion para inscribir a un alumno a una asignatura, toma una instancia student como argumento y agrega la instancia a la propiedad assignatures
-function enrollStudentToClass(student) {
-        const assignature = prompt('Ingrese la asignatura:');
-        const grade = prompt('Ingrese la nota:');
-      
-        if (assignature && grade) {
-          student.assignatures.push(assignature);
-          student.grades.push(grade);
-      
-          displayStudentList();
-        }
-      }
-*/
-
-//Obteniendo el contenido HTML de los botones del menu principal
-const addStudent = document.getElementById('newStudentButton');
-const backButton = document.getElementById('backButton');
-const studentListButton = document.getElementById('studentListButton');
-const searchStudentButton = document.getElementById('searchStudentButton');
-
-
-//addEventListener en el boton newStudentMenu para activar el menu para dar de alta un nuevo estudiante
-addStudent.addEventListener('click', function () {
-  mainMenu.style.display = 'none';
-  newStudentMenu.style.display = 'flex';
-  studentListMenu.style.display = 'none';
-  searchStudentMenu.style.display = 'none';
+newSubject.addEventListener('click', function () {
+  let newAssignature = prompt("Materia:");
+  spottedStudent.addSubject(newAssignature);
 })
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *4
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *5.- Asignar una calificacion a Student
+const newGrade = document.getElementById('evaluate');
 
-
-//addEventListener en el boton backButton para regresar al menu principal
-backButton.addEventListener('click', function () {
-  mainMenu.style.display = 'flex';
-  newStudentMenu.style.display = 'none';
-  studentListMenu.style.display = 'none';
-  searchStudentMenu.style.display = 'none';
+newGrade.addEventListener('click', function () {
+  let assignature = prompt("Materia:");
+  let grade = parseInt(prompt("Calificacion:"));
+  spottedStudent.assignGrade(grade, assignature);
 })
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *5
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *6.- Ver el promedio final
+const getAverage = document.getElementById('average');
 
-//addEventListener en el boton studentListButton para desplegar la lista completa de estudiantes
-studentListButton.addEventListener('click', function () {
-  mainMenu.style.display = 'none';
-  newStudentMenu.style.display = 'none';
-  studentListMenu.style.display = 'flex';
-  searchStudentMenu.style.display = 'none';
-  devfStudents.displayStudentList();
-
+getAverage.addEventListener('click', function () {
+  alert(spottedStudent.getFinalGrade())
 })
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *6
 
+const student1 = new Student("Israel", "Godinez", 27);
+const student2 = new Student("Pelusa", "Nei", 26);
+const student3 = new Student("Jamaico", "Camion", 2);
+const student4 = new Student("Coquis", "Bolis", 1);
 
+devfStudents.addStudent(student1);
+devfStudents.addStudent(student2);
+devfStudents.addStudent(student3);
+devfStudents.addStudent(student4);
 
-//addEventListener en el boton gropuListButton para desplegar la lista completa de estudiantes
-searchStudentButton.addEventListener('click', function () {
-  mainMenu.style.display = 'none';
-  newStudentMenu.style.display = 'none';
-  studentListMenu.style.display = 'none';
-  searchStudentMenu.style.display = 'flex';
+student1.addSubject("Biofisica");
+student1.addSubject("Salud");
+student1.addSubject("Herramientas");
+student1.assignGrade(20, "Biofisica");
+student1.assignGrade(100, "Salud");
+student1.assignGrade(150, "Herramientas");
 
-})
+student2.addSubject("Estadistica");
+student2.addSubject("Programacion");
+student2.addSubject("Imagenes");
+student2.assignGrade(10, "Estadistica");
+student2.assignGrade(60, "Programacion");
+student2.assignGrade(70, "Imagenes");
 
+student3.addSubject("Automatizacion");
+student3.addSubject("Instrumentacion");
+student3.addSubject("Circuitos");
+student3.assignGrade(5, "Automatizacion");
+student3.assignGrade(5, "Instrumentacion");
+student3.assignGrade(50, "Circuitos");
 
-/*
-const groupList = [];
+student4.addSubject("Matematicas");
+student4.addSubject("Biologia");
+student4.addSubject("Filosofia");
+student4.assignGrade(100, "Matematicas");
+student4.assignGrade(30, "Biologia");
+student4.assignGrade(50, "Filosofia");
+
+console.log(student4.getFinalGrade());
+
+const A = new Group("A");
+A.addStudentGroup(((devfStudents.searchStudent("Coquis"))));
+console.log(A);
+A.addStudentGroup(((devfStudents.searchStudent("Israel"))));
+console.log(A.selectedStudents);
+console.log(A.getAverage());
+console.log(devfStudents);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *7.- Crear/Ver grupos
+
+const devfGroupList = [];
 
 function createGroup(event) {
   event.preventDefault();
@@ -219,26 +141,22 @@ function createGroup(event) {
   const selectedStudents = Array.from(studentSelect.selectedOptions)
     .map((option) => option.value);
 
-  const group = {
-    name: groupName,
-    students: selectedStudents,
-  };
-  groupList.push(group);
 
-  
-    displayGroupList();
-    groupNameInput.value = '';
-    studentSelect.selectedIndex = -1;
+  const group = new Group(groupName);
+  group.addStudentGroup(selectedStudents);
+
+  devfGroupList.push(group);
+  console.log(group);
+  displayGroupList();
+  groupNameInput.value = '';
+  studentSelect.selectedIndex = -1;
 }
-*/
 
-/*
 function displayGroupList() {
-  
   const groupTableBody = document.querySelector('#group-table tbody');
   groupTableBody.innerHTML = '';
-
-  groupList.forEach((group) => {
+  console.log(devfGroupList);
+  devfGroupList.forEach((group) => {
     const groupRow = document.createElement('tr');
 
     const nameCell = document.createElement('td');
@@ -247,7 +165,8 @@ function displayGroupList() {
 
     const studentsCell = document.createElement('td');
     const studentsList = document.createElement('ul');
-    group.students.forEach((studentName) => {
+    group.selectedStudents.forEach((studentName) => {
+
       const listItem = document.createElement('li');
       listItem.innerText = studentName;
       studentsList.appendChild(listItem);
@@ -258,19 +177,80 @@ function displayGroupList() {
     groupTableBody.appendChild(groupRow);
   });
 
+
   // generar opciones de estudiantes en el formulario
   const studentSelect = document.querySelector('#student-select');
   studentSelect.innerHTML = '';
-  studentList.forEach((student) => {
+  devfStudents.studentList.forEach((student) => {
     const option = document.createElement('option');
     option.value = student.name;
-    option.innerText = `${student.name} ${student.surname}`;
+    option.innerText = student.name + " " + student.surname;
     studentSelect.appendChild(option);
   });
 }
-*/
 
-/*
-const groupForm = document.querySelector('formGroup');
+displayGroupList();
+const groupForm = document.querySelector('#formNewGroup');
 groupForm.addEventListener('submit', createGroup);
-*/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *7
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *8.-Obtener contenido HTML de los botones para navegar en los menus + EventListeners 
+//Obteniendo el contenido HTML de los botones del menu principal
+const newStudentButton = document.getElementById('newStudentButton');
+const backButton = document.getElementById('backButton');
+const studentListButton = document.getElementById('studentListButton');
+const searchStudentButton = document.getElementById('searchStudentButton');
+const newGroupButton = document.getElementById('newGroupButton');
+
+//addEventListener en el boton newStudentMenu para activar el menu para dar de alta un nuevo estudiante
+newStudentButton.addEventListener('click', function () {
+  mainMenu.style.display = 'none';
+  newStudentMenu.style.display = 'flex';
+  studentListMenu.style.display = 'none';
+  searchStudentMenu.style.display = 'none';
+  studentTable2.style.display = 'none';
+  newGroupMenu.style.display = 'none';
+})
+
+//addEventListener en el boton backButton para regresar al menu principal
+backButton.addEventListener('click', function () {
+  mainMenu.style.display = 'flex';
+  newStudentMenu.style.display = 'none';
+  studentListMenu.style.display = 'none';
+  searchStudentMenu.style.display = 'none';
+  studentTable2.style.display = 'none';
+  newGroupMenu.style.display = 'none';
+
+})
+
+//addEventListener en el boton studentListButton para desplegar la lista completa de estudiantes
+studentListButton.addEventListener('click', function () {
+  mainMenu.style.display = 'none';
+  newStudentMenu.style.display = 'none';
+  studentListMenu.style.display = 'flex';
+  searchStudentMenu.style.display = 'none';
+  studentTable2.style.display = 'none';
+  newGroupMenu.style.display = 'none';
+  devfStudents.displayStudentList();
+})
+
+//addEventListener en el boton gropuListButton para desplegar la lista completa de estudiantes
+searchStudentButton.addEventListener('click', function () {
+  mainMenu.style.display = 'none';
+  newStudentMenu.style.display = 'none';
+  studentListMenu.style.display = 'none';
+  searchStudentMenu.style.display = 'flex';
+  studentTable2.style.display = 'none';
+  newGroupMenu.style.display = 'none';
+})
+
+newGroupButton.addEventListener('click', function () {
+  mainMenu.style.display = 'none';
+  newStudentMenu.style.display = 'none';
+  studentListMenu.style.display = 'none';
+  searchStudentMenu.style.display = 'none';
+  studentTable2.style.display = 'none';
+  newGroupMenu.style.display = 'flex';
+})
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// *8

@@ -53,8 +53,8 @@ class StudentList {
 
         for (let i = 0; i < auxList.length; i++) {
             if ((studentData === auxList[i].name) || (studentData === auxList[i].surname)) {
-    
-                ////////////////////////////////////////////////////////////////////////////////
+
+
                 const spottedStudent = auxList[i];
                 const studentTableBody = document.querySelector('#studentTable2 tbody');
                 studentTableBody.innerHTML = '';
@@ -89,11 +89,10 @@ class StudentList {
 
 
                 studentTableBody.appendChild(studentRow);
-                return true;
-                ////////////////////////////////////////////////////////////////////////////////
+                return auxList[i];
 
-            } 
-        }
+            }
+        } return false;
     }
 }
 

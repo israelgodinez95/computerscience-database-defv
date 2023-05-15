@@ -46,10 +46,11 @@
                     <button id="newStudentButton">Dar de alta nuevo estudiante</button>
                     <button id="studentListButton">Ver lista de alumnos</button>
                     <button id="searchStudentButton">Buscar alumno</button>
+                    <button id="newGroupButton">Grupos</button>
                 </div>
             </div>
 
-            <div id="newStudentMenu" style="display: none" >
+            <div id="newStudentMenu" style="display: none">
                 <div class="menuTitle">
                     <div class="title">
                         <h1>Dar de alta nuevo alumno</h1>
@@ -95,26 +96,80 @@
                     </div>
                 </div>
                 <form id="formSearchStudent">
-                    <label for="name">Nombre o apellido:</label>
+                    <label for="nameOrSurename">Nombre o apellido:</label>
                     <input type="text" id="nameOrSurename" name="nameOrSurename" required><br>
-                    <button type="submit">Buscar</button>
+                    <button id="searchStudentAction">Buscar</button>
                 </form>
 
-                <table id="studentTable2" style="display: none">
+                <div id="studentTable2" style="display: none">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th id="aqui">Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th id="subjectList">Asignaturas/Calificaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table2body">
+                        </tbody>
+                    </table>
+                    <div id="studentActions">
+                        <button id="enroll">Inscribir</button>
+                        <button id="evaluate">Calificar</button>
+                        <button id="average">Promedio</button>
+                    </div>
+                </div>
+
+                <div id="groupListMenu" style="display: none">
+                    <div class="menuTitle">
+                        <div class="title">
+                            <h1>Crear Grupo</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="newGroupMenu" style="display: none">
+                <div class="menuTitle">
+                    <div class="title">
+                        <h1>Crear nuevo grupo</h1>
+                    </div>
+                </div>
+                <div id="divForm">
+                     <form id="formNewGroup">
+                    <label>
+                      Nombre del grupo:
+                      <input type="text" id="group-name" required>
+                    </label>
+                    <br>
+                    <label>
+                      Estudiantes:
+                      <select id="student-select" multiple>
+                        <!-- opciones generadas dinámicamente con JavaScript -->
+                      </select>
+                    </label>
+                    <br>
+                    <button type="submit">Crear grupo</button>
+                  </form>
+                </div>
+               <div id="divTable">
+                  <table id="group-table">
                     <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Edad</th>
-                            <th id="subjectList">Asignaturas/Calificaciones</th>
-                        </tr>
+                      <tr>
+                        <th>Grupo</th>
+                        <th>Estudiantes</th>
+                      </tr>
                     </thead>
                     <tbody>
+                      <!-- filas de tabla generadas dinámicamente con JavaScript -->
                     </tbody>
-                </table>
-
+                  </table>
+               </div>
+                  
+                
+                  
             </div>
-            
 
 
             <!-- <div id="groupListMenu" style="display:none">

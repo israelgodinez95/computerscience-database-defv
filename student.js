@@ -27,15 +27,20 @@ class Student {
         for(let i=0; i<assignatureList.length; i++){{
             if(assignature===assignatureList[i]){
                 this.grades[i]=grade;
-            }
+                console.log("Calificacion de "+ grade + " en la materia de "+ assignatureList[i]);
+            } 
         }}
-        
     }
 
+    getFinalGrade(){
+        let average=0;
+        for(let i=0; i<this.grades.length; i++){
+        average=average+this.grades[i]; 
+        }
+        return average/this.grades.length;
+    }
 
-    
 }
 
 // exportamos la clase Student
 export { Student };  
-
